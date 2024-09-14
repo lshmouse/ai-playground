@@ -1,0 +1,2 @@
+FROM nvidia/cuda:12.6.1-cudnn-devel-ubuntu20.04
+LABEL authors="lshmouse@gmail.com"
