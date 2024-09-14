@@ -2,5 +2,4 @@
 # as recommended in https://github.com/bazelbuild/bazel/issues/6319
 try-import %workspace%/bazel/tools/bazel.rc
 
-try-import %workspace%/user.bazelrc 
-
+try-import %workspace%/user.bazelrc
