@@ -6,12 +6,9 @@ def clean_dep(dep):
     return str(Label(dep))
 
 def repo():
-    version = "0.8.1"
     http_archive(
         name = "rules_python",
-        strip_prefix = "rules_python-{}".format(version),
-        sha256 = "cdf6b84084aad8f10bf20b46b77cb48d83c319ebe6458a18e9d2cebf57807cdd",
-        urls = [
-            "https://github.com/bazelbuild/rules_python/archive/{}.tar.gz".format(version),
-        ],
+        sha256 = "b593d13bb43c94ce94b483c2858e53a9b811f6f10e1e0eedc61073bd90e58d9c",
+        strip_prefix = "rules_python-0.12.0",
+        url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.12.0.tar.gz",
     )
