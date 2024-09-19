@@ -6,6 +6,10 @@ repositories()
 load("//bazel:init_deps.bzl", "init_deps")
 init_deps()
 
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+bazel_skylib_workspace()
+
+
 # Load the LLVM toolchain
 load("@toolchains_llvm//toolchain:deps.bzl", "bazel_toolchain_dependencies")
 bazel_toolchain_dependencies()
