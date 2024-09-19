@@ -1,0 +1,7 @@
+#ifndef EXPERIMENTAL_CUDA_EXAMPLE_VECTOR_ADD_H_
+#define EXPERIMENTAL_CUDA_EXAMPLE_VECTOR_ADD_H_
+
+namespace qcraft {
+void VectorAddDemo(int num);
+}
+#endif  // EXPERIMENTAL_CUDA_EXAMPLE_VECTOR_ADD_H_
