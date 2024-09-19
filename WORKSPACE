@@ -54,3 +54,7 @@ oci_pull(
     image = "debian",
     platforms = ["linux/amd64",],
 )
+
+### pybind11 Setup
+load("@pybind11_bazel//:python_configure.bzl", "python_configure")
+python_configure(name = "local_config_python")
