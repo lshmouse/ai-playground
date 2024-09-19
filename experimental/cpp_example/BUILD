@@ -1,5 +1,5 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 load("//bazel/tools:cpplint.bzl", "cpplint")
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_binary")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load", "oci_push")
 load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
 package(default_visibility = ["//visibility:public"])

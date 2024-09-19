@@ -58,3 +58,8 @@ oci_pull(
 ### pybind11 Setup
 load("@pybind11_bazel//:python_configure.bzl", "python_configure")
 python_configure(name = "local_config_python")
+
+### CUDA Setup
+load("@rules_cuda//cuda:repositories.bzl", "register_detected_cuda_toolchains", "rules_cuda_dependencies")
+rules_cuda_dependencies()
+register_detected_cuda_toolchains()
