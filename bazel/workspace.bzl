@@ -9,7 +9,8 @@ load("//third_party/rules_proto:workspace.bzl", rules_proto = "repo")
 load("//third_party/rules_go:workspace.bzl", rules_go = "repo")
 load("//third_party/rules_rust:workspace.bzl", rules_rust = "repo")
 
-load("//third_party/rules_docker:workspace.bzl", rules_docker = "repo")
+load("//third_party/rules_oci:workspace.bzl", rules_oci = "repo")
+load("//third_party/rules_pkg:workspace.bzl", rules_pkg = "repo")
 
 load("//third_party/cpplint:workspace.bzl", cpplint = "repo")
 
@@ -31,8 +32,9 @@ def initialize_language_repos():
     pybind11()
     rules_go()
 
+    rules_pkg()
     rules_rust()
-    rules_docker()
+    rules_oci()
 
 def initialize_third_parties():
     """ Load third party repositories.  See above load() statements. """
