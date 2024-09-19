@@ -35,3 +35,4 @@ TODO
 - Thanks to jiaming: https://github.com/storypku
 - https://github.com/ApolloAuto/apollo
 - See: https://github.com/kriscfoster/multi-language-bazel-monorepo
+- https://github.com/yechuan51/multi-language-bazel-monorepo
