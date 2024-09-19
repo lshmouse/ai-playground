@@ -41,8 +41,16 @@ rules_rust_dependencies()
 rust_register_toolchains()
 
 ### Docker Setup
-load("@io_bazel_rules_docker//repositories:repositories.bzl", container_repositories = "repositories")
-container_repositories()
+load("@rules_oci//oci:dependencies.bzl", "rules_oci_dependencies")
+rules_oci_dependencies()
+load("@rules_oci//oci:repositories.bzl", "oci_register_toolchains")
+oci_register_toolchains(name = "oci")
 
-load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
-container_deps()
+load("@rules_oci//oci:pull.bzl", "oci_pull")
+
+oci_pull(
+    name = "debian_base",
+    digest = "sha256:3d868b5eb908155f3784317b3dda2941df87bbbbaa4608f84881de66d9bb297b",
+    image = "debian",
+    platforms = ["linux/amd64",],
+)
