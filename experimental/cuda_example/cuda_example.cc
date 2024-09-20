@@ -1,23 +1,30 @@
+#include <cstdio>
+
+#if defined(CUDA_ENABLED)
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-#include "glog/logging.h"
-
 #include "experimental/cuda_example/mat_add.h"
 #include "experimental/cuda_example/vector_add.h"
+#endif
+
+#include "glog/logging.h"
 
 namespace qcraft {
 
+#if defined(CUDA_ENABLED)
 static void HandleError(cudaError_t err, const char* file, int line) {
   if (err != cudaSuccess) {
     printf("%s in %s at line %d\n", cudaGetErrorString(err), file, line);
     exit(EXIT_FAILURE);
   }
 }
+#endif
 
 #define HANDLE_ERROR(err) (HandleError(err, __FILE__, __LINE__))
 
 int Main(int argc, char* argv[]) {
+#if defined(CUDA_ENABLED)
   cudaDeviceProp dev_prop;
   int num_devices = 0;
   int driver_version;
@@ -47,6 +54,10 @@ int Main(int argc, char* argv[]) {
   // VectorAddDemo(1000);
   MatAddDemo(100);
   return 0;
+#elif defined(CUDA_DISABLED)
+  fprintf(stderr, "cuda disabled\n");
+  return -1;
+#endif
 }
 }  // namespace qcraft
 
