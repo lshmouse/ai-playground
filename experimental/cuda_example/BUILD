@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
-load("@rules_cuda//cuda:defs.bzl", "cuda_library")
+load("@rules_cuda//cuda:defs.bzl", "cuda_library", "requires_cuda")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -9,12 +9,17 @@ cc_binary(
         "cuda_example.cc",
     ],
     linkstatic = True,
+    defines = [] + select({
+        "@rules_cuda//cuda:is_enabled": ["CUDA_ENABLED"],
+        "//conditions:default": ["CUDA_DISABLED"],
+    }),
     deps = [
-        ":mat_add_lib",
-        ":vector_add_lib",
         "@com_github_google_glog//:glog",
         "@com_google_absl//absl/strings",
-    ],
+    ] + select({
+        "@rules_cuda//cuda:is_enabled": [":mat_add_lib", ":vector_add_lib"],
+        "//conditions:default": [],
+    }),
 )
 
 cuda_library(
@@ -25,6 +30,7 @@ cuda_library(
     deps = [
         "@com_github_google_glog//:glog",
     ],
+    target_compatible_with = requires_cuda(),
 )
 
 cuda_library(
@@ -35,4 +41,5 @@ cuda_library(
     deps = [
         "@com_github_google_glog//:glog",
     ],
+    target_compatible_with = requires_cuda(),
 )

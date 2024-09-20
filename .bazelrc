@@ -12,6 +12,9 @@ build:cuda_clang --@rules_cuda//cuda:copts=-Wno-unknown-cuda-version
 build:cuda_nvcc --@rules_cuda//cuda:compiler=nvcc
 build:cuda_nvcc --@rules_cuda//cuda:copts=-allow-unsupported-compiler,--default-stream=per-thread
 
+build:cpu --@rules_cuda//cuda:enable=False
+build:gpu --@rules_cuda//cuda:enable=True
+
 # +------------------------------------------------------------+
 # | CPP Lint Tests & Unit Tests                                |
 # +------------------------------------------------------------+
