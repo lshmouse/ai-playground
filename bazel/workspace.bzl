@@ -19,6 +19,7 @@ load("//third_party/glog:workspace.bzl", glog = "repo")
 load("//third_party/gflags:workspace.bzl", gflags = "repo")
 load("//third_party/gtest:workspace.bzl", gtest = "repo")
 load("//third_party/benchmark:workspace.bzl", benchmark = "repo")
+load("//third_party/zlib:workspace.bzl", zlib = "repo")
 load("//third_party/protobuf:workspace.bzl", protobuf = "repo")
 
 load("//third_party/absl:workspace.bzl", absl = "repo")
@@ -41,6 +42,7 @@ def initialize_language_repos():
 def initialize_third_parties():
     """ Load third party repositories.  See above load() statements. """
     cpplint()
+    zlib()
 
     glog()
     gflags()
