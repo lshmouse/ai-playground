@@ -1,4 +1,4 @@
-// Copyright 2023 Shaohui Liu
+// Copyright 2023 AI-Playground
 
 #include "experimental/cpp_example/hello_greet.h"
 

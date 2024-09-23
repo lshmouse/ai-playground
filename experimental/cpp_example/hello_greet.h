@@ -1,4 +1,4 @@
-// Copyright 2023 Shaohui Liu
+// Copyright 2023 AI-Playground
 #pragma once
 
 #include <string>
