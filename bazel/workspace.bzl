@@ -44,6 +44,7 @@ load("//third_party/protobuf:workspace.bzl", protobuf = "repo")
 load("//third_party/grpc:workspace.bzl", grpc = "repo")
 
 # autonomous vechicle libraries
+load("//third_party/rules_ros2:workspace.bzl", rules_ros2 = "repo")
 load("//third_party/mcap:workspace.bzl", mcap = "repo")
 load("//third_party/onnxruntime:workspace.bzl", onnxruntime = "repo")
 load("//third_party/foxglove_schemas:workspace.bzl", foxglove_schemas = "repo")
@@ -94,6 +95,7 @@ def init_third_parties():
     protobuf()
     grpc()
 
+    rules_ros2()
     mcap()
     foxglove_schemas()
     onnxruntime()
