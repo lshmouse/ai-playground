@@ -10,16 +10,16 @@ bazel test --config=cpplint //experimental/cpp_example/...
 ```
 ### TODO List
 #### Env Preparation
-- [TODO] Init dev docker
+- [DONE] Init dev docker
 - [DONE] Init bazel and c++ toolchain
 - [DONE] rule_python https://github.com/bazelbuild/rules_python
 - [DONE] Init common thirdparties like gtest, gflags, opencv and so on
 - [DONE] rule_go and exmples: https://github.com/bazelbuild/rules_go
+- [DONE] rules_proto and examples: https://github.com/bazelbuild/rules_proto
 - [TODO] bazoku https://github.com/salesforce/bazoku
 - [TODO] rules_helm https://github.com/abrisco/rules_helm
 - [TODO] rules_k8s https://github.com/bazelbuild/rules_k8s
 - [TODO] rules_rust and examples: https://github.com/bazelbuild/rules_rust
-- [TOOD] rules_proto and examples: https://github.com/bazelbuild/rules_proto
 
 ### Code Linters
 - [TODO] python https://github.com/philipuvarov/bazel-ruff
@@ -29,7 +29,7 @@ bazel test --config=cpplint //experimental/cpp_example/...
 - [TODO] BUILD https://github.com/bazelbuild/buildtools/blob/main/buildifier/README.md
 
 #### AI Env
-- [TODO] Cuda and cuda rules(https://github.com/bazel-contrib/rules_cuda)
+- [DONE] Cuda and cuda rules(https://github.com/bazel-contrib/rules_cuda)
 - [DONE] pybind11 and examples
 - [TODO] NCCL and examples
 

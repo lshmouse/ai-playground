@@ -2,7 +2,6 @@
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# NOTE(Xiaonan He): If update commit/version, please notify ci team
 def repo():
     version = "3.19.4"
     http_archive(
