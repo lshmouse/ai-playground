@@ -49,6 +49,7 @@ load("//third_party/rules_ros2:workspace.bzl", rules_ros2 = "repo")
 load("//third_party/mcap:workspace.bzl", mcap = "repo")
 load("//third_party/onnxruntime:workspace.bzl", onnxruntime = "repo")
 load("//third_party/foxglove_schemas:workspace.bzl", foxglove_schemas = "repo")
+load("//third_party/rerun:workspace.bzl", rerun = "repo")
 
 def init_language_repos():
     toolchains_llvm()
@@ -101,6 +102,7 @@ def init_third_parties():
     mcap()
     foxglove_schemas()
     onnxruntime()
+    rerun()
 
 # Define all external repositories required by
 def repositories():

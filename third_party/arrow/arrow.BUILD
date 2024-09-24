@@ -1,5 +1,6 @@
 # Description:
 #   Apache Arrow library
+# See: https://github.com/tensorflow/io/blob/master/WORKSPACE
 
 package(default_visibility = ["//visibility:public"])
 
