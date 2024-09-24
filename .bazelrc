@@ -1,4 +1,4 @@
-build --cxxopt=-std=c++14
+build --cxxopt=-std=c++17
 
 build:clang --repo_env=CC=clang
 build:clang --copt=-std=c++17

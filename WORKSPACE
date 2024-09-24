@@ -3,6 +3,9 @@ workspace(name = "ai_playground")
 load("//bazel:workspace.bzl", "repositories")
 repositories()
 
+load("//bazel:init_deps.bzl", "init_deps")
+init_deps()
+
 # Load the LLVM toolchain
 load("@toolchains_llvm//toolchain:deps.bzl", "bazel_toolchain_dependencies")
 bazel_toolchain_dependencies()
@@ -12,6 +15,9 @@ llvm_toolchain(
     name = "llvm_toolchain",
     llvm_version = "16.0.0",
 )
+
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+rules_foreign_cc_dependencies()
 
 load("@llvm_toolchain//:toolchains.bzl", "llvm_register_toolchains")
 llvm_register_toolchains()
