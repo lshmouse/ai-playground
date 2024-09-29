@@ -20,3 +20,15 @@ py_binary(
     main = "python_web.py",
     deps = [":python_web_lib"],
 )
+
+py_binary(
+    name = "python_decorator",
+    srcs = ["python_decorator.py"],
+    main = "python_decorator.py",
+)
+
+py_binary(
+    name = "python_context_manager",
+    srcs = ["python_context_manager.py"],
+    main = "python_context_manager.py",
+)
