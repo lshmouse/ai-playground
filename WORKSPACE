@@ -34,12 +34,22 @@ pip_install(
     requirements = "//bazel/python:requirements.txt",
 )
 
+
+### GRPC Setup
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()
+
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+grpc_extra_deps()
+
 ### Gazelle Setup
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+
 ### Golang Setup
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 go_rules_dependencies()
-go_register_toolchains(version = "1.18")
+# duplicate with grpc_extra_deps
+# go_register_toolchains(version = "1.18")
 gazelle_dependencies()
 
 load("//bazel/go:deps.bzl", "go_dependencies")
