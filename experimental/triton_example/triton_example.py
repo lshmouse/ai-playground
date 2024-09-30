@@ -6,14 +6,14 @@ def softmax(Y, stride_ym, stride_yn, X, stride_xm, stride_xn, M, N):
     # row index
     m = tl.program_id(0)
     # col indices
-    # this specific kernel only works for matrices that 
+    # this specific kernel only works for matrices that
     # have less than BLOCK_SIZE columns
     BLOCK_SIZE: tl.constexpr = 1024
     n = tl.arange(0, BLOCK_SIZE)
     # the memory address of all the elements
     # that we want to load can be computed as follows
     X = X + m * stride_xm + n * stride_xn
-    # load input data; pad out-of-bounds elements with 0 
+    # load input data; pad out-of-bounds elements with 0
     x = tl.load(X, mask=n < N, other=-float('inf'))
     # compute numerically-stable softmax
     z = x - tl.max(x, axis=0)
@@ -31,6 +31,6 @@ Y = torch.empty_like(X)
 # SPMD launch grid
 grid = (X.shape[0], )
 # enqueue GPU kernel
-softmax[grid](Y, Y.stride(0), Y.stride(1), 
+softmax[grid](Y, Y.stride(0), Y.stride(1),
               X, X.stride(0), X.stride(1),
               X.shape[0]    , X.shape[1])
