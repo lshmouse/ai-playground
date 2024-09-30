@@ -23,15 +23,13 @@ ros2_cpp_binary(
     ],
 )
 
-# Disabled ros2_launch temporarily, for following issue:
-# Error: file '@rules_python//python:pip.bzl' does not contain symbol 'whl_filegroup'
-#ros2_launch(
-#    name = "ros_chatter",
-#    launch_file = "ros_chatter.py",
-#    nodes = [
-#        ":ros_listener",
-#        ":ros_talker",
-#    ],
-#)
+ros2_launch(
+   name = "ros_chatter",
+   launch_file = "ros_chatter.py",
+   nodes = [
+       ":ros_listener",
+       ":ros_talker",
+   ],
+)
 
 cpplint()

@@ -27,12 +27,12 @@ load("@rules_python//python:repositories.bzl", "py_repositories")
 
 py_repositories()
 
-load("@rules_python//python:pip.bzl", "pip_install")
+# load("@rules_python//python:pip.bzl", "pip_install")
 
-pip_install(
-    name = "pip",
-    requirements = "//bazel/python:requirements.txt",
-)
+# pip_install(
+#     name = "pip",
+#     requirements = "//bazel/python:requirements.txt",
+# )
 
 ### Gazelle Setup
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
@@ -77,17 +77,13 @@ register_detected_cuda_toolchains()
 
 ### ROS2 Setup
 load("@com_github_mvukov_rules_ros2//repositories:repositories.bzl", "ros2_repositories", "ros2_workspace_repositories")
-
 ros2_workspace_repositories()
-
 ros2_repositories()
 
 load("@com_github_mvukov_rules_ros2//repositories:deps.bzl", "ros2_deps")
-
 ros2_deps()
 
 load("@rules_python//python:repositories.bzl", "python_register_toolchains")
-
 python_register_toolchains(
     name = "rules_ros2_python",
     python_version = "3.10",
