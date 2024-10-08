@@ -82,10 +82,10 @@ cc_library(
     ],
     copts = select({
         "@bazel_tools//src/conditions:windows": [
-            "/std:c++14",
+            "/std:c++17",
         ],
         "//conditions:default": [
-            "-std=c++14",
+            "-std=c++17",
         ],
     }),
     defines = [
@@ -121,5 +121,6 @@ cc_library(
         "@xsimd",
         "@zlib",
         "@zstd",
+        "@io_opentelemetry_cpp//sdk/src/trace"
     ],
 )
