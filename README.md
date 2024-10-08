@@ -34,10 +34,10 @@ bazel test --config=cpplint //experimental/cpp_example/...
 - [TODO] NCCL and examples
 
 #### Autonomous System
-- [TODO] rules_ros and examples: https://github.com/ApexAI/rules_ros
+- [DONE] rules_ros and examples: https://github.com/ApexAI/rules_ros
 - [TODO] nuscenes dataset and dataloader
 - [TODO] rerun.io examplee
-- [TODO] mcap example
+- [DONE] mcap example
 
 #### AI Models
 - [TODO] NLP(BERT, GPT, etc.)
@@ -57,6 +57,7 @@ bazel test --config=cpplint //experimental/cpp_example/...
 - [TODO] GPU mem test tools
 - [TODO] nvcc network performance test tools
 - [TODO] pytorch profiling tools
+- [TODO] MLIR https://github.com/llvm/torch-mlir/blob/main/docs/development.md#bazel-build
 
 ### References
 - Thanks to jiaming: https://github.com/storypku
