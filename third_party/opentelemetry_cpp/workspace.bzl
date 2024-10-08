@@ -6,7 +6,6 @@ def clean_dep(dep):
     return str(Label(dep))
 
 def repo():
-    # 10.0.1
     version = "1.14.2"
     http_archive(
         name = "io_opentelemetry_cpp",
