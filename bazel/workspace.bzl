@@ -32,6 +32,7 @@ load("//third_party/xsimd:workspace.bzl", xsimd = "repo")
 load("//third_party/rapidjson:workspace.bzl", rapidjson = "repo")
 load("//third_party/arrow:workspace.bzl", arrow = "repo")
 load("//third_party/thrift:workspace.bzl", thrift = "repo")
+load("//third_party/opentelemetry_cpp:workspace.bzl", opentelemetry_cpp = "repo")
 
 # google cpp libraries
 load("//third_party/double_conversion:workspace.bzl", double_conversion = "repo")
@@ -85,6 +86,7 @@ def init_third_parties():
     arrow()
     libevent()
     thrift()
+    opentelemetry_cpp()
 
     double_conversion()
     absl()
