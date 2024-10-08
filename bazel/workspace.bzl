@@ -1,14 +1,16 @@
 # external dependencies that can be loaded in WORKSPACE files.
 
 load("//third_party/toolchains_llvm:workspace.bzl", toolchains_llvm = "repo")
+
+load("//third_party/bazel_skylib:workspace.bzl", bazel_skylib = "repo")
 load("//third_party/bazel_gazelle:workspace.bzl", bazel_gazelle = "repo")
+
 load("//third_party/rules_python:workspace.bzl", rules_python = "repo")
 load("//third_party/rules_foreign_cc:workspace.bzl", rules_foreign_cc = "repo")
 load("//third_party/pybind11:workspace.bzl", pybind11 = "repo")
 load("//third_party/rules_proto:workspace.bzl", rules_proto = "repo")
 load("//third_party/rules_go:workspace.bzl", rules_go = "repo")
 load("//third_party/rules_rust:workspace.bzl", rules_rust = "repo")
-load("//third_party/rules_cuda:workspace.bzl", rules_cuda = "repo")
 
 load("//third_party/rules_oci:workspace.bzl", rules_oci = "repo")
 load("//third_party/rules_pkg:workspace.bzl", rules_pkg = "repo")
@@ -50,8 +52,14 @@ load("//third_party/mcap:workspace.bzl", mcap = "repo")
 load("//third_party/onnxruntime:workspace.bzl", onnxruntime = "repo")
 load("//third_party/foxglove_schemas:workspace.bzl", foxglove_schemas = "repo")
 
+# cuda
+load("//third_party/rules_cuda:workspace.bzl", rules_cuda = "repo")
+load("//third_party/nccl:workspace.bzl", nccl = "repo")
+
 def init_language_repos():
     toolchains_llvm()
+
+    bazel_skylib()
     bazel_gazelle()
 
     rules_proto()
@@ -63,7 +71,7 @@ def init_language_repos():
     rules_pkg()
     rules_rust()
     rules_oci()
-    rules_cuda()
+
 
 def init_compression_libs():
     boringssl()
@@ -102,8 +110,13 @@ def init_third_parties():
     foxglove_schemas()
     onnxruntime()
 
+def init_cuda_repos():
+    rules_cuda()
+    nccl()
+
 # Define all external repositories required by
 def repositories():
     init_language_repos()
     init_compression_libs()
     init_third_parties()
+    init_cuda_repos()
