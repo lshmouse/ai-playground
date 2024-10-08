@@ -6,11 +6,11 @@ def clean_dep(dep):
     return str(Label(dep))
 
 def repo():
-    version = "1.45.2"
+    version = "1.59.5"
     http_archive(
         name = "com_github_grpc_grpc",
         strip_prefix = "grpc-{}".format(version),
-        sha256 = "e18b16f7976aab9a36c14c38180f042bb0fd196b75c9fd6a20a2b5f934876ad6",
+        sha256 = "ad295f118a84d87096fe3eb416ef446d75d44c988eadccebc650656eb9383b3d",
         urls = [
             "https://github.com/grpc/grpc/archive/v{}.tar.gz".format(version),
         ],
