@@ -6,6 +6,11 @@ py_binary(
     srcs = ["python_cli.py"],
 )
 
+py_binary(
+    name = "python_class_call",
+    srcs = ["python_class_call.py"],
+)
+
 py_library(
     name = "python_web_lib",
     srcs = ["python_web.py"],
