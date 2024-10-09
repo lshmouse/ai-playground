@@ -13,6 +13,7 @@ load("//third_party/rules_cuda:workspace.bzl", rules_cuda = "repo")
 load("//third_party/rules_oci:workspace.bzl", rules_oci = "repo")
 load("//third_party/rules_pkg:workspace.bzl", rules_pkg = "repo")
 
+load("//third_party/rules_lint:workspace.bzl", rules_lint = "repo")
 load("//third_party/cpplint:workspace.bzl", cpplint = "repo")
 
 # compression libraries
@@ -64,6 +65,8 @@ def init_language_repos():
     rules_rust()
     rules_oci()
     rules_cuda()
+
+    rules_lint()
 
 def init_compression_libs():
     boringssl()

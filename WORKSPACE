@@ -126,3 +126,56 @@ opentelemetry_cpp_deps()
 # # (required after v1.8.0) Load extra dependencies required for OpenTelemetry
 load("@io_opentelemetry_cpp//bazel:extra_deps.bzl", "opentelemetry_extra_deps")
 opentelemetry_extra_deps()
+
+
+
+load("@aspect_bazel_lib//lib:repositories.bzl", "aspect_bazel_lib_dependencies")
+
+# aspect_bazel_lib depends on bazel_skylib
+aspect_bazel_lib_dependencies()
+
+load(
+    "@aspect_rules_lint//format:repositories.bzl",
+    # Fetch additional formatter binaries you need:
+    "fetch_java_format",
+    "fetch_ktfmt",
+    "fetch_swiftformat",
+    "rules_lint_dependencies",
+)
+
+rules_lint_dependencies()
+
+fetch_java_format()
+
+fetch_ktfmt()
+
+fetch_swiftformat()
+
+load("@aspect_rules_lint//lint:checkstyle.bzl", "fetch_checkstyle")
+
+fetch_checkstyle()
+
+load("@aspect_rules_lint//lint:pmd.bzl", "fetch_pmd")
+
+fetch_pmd()
+
+load("@aspect_rules_lint//lint:vale.bzl", "fetch_vale")
+
+fetch_vale()
+
+load("@aspect_rules_lint//lint:ktlint.bzl", "fetch_ktlint")
+
+fetch_ktlint()
+
+########################
+# Optional: multitool provides defaults for some tools such as yamlfmt
+# If you do not set up multitool, you must provide these tools yourself
+load("@rules_multitool//multitool:multitool.bzl", "multitool")
+
+multitool(
+    name = "multitool",
+    lockfiles = [
+        "@aspect_rules_lint//format:multitool.lock.json",
+        "@aspect_rules_lint//lint:multitool.lock.json",
+    ],
+)

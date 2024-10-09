@@ -4,15 +4,16 @@ from contextlib import ContextDecorator
 import time
 import inspect
 
+
 class ContextExample(ContextDecorator):
     def __enter__(self):
         self.start = time.time()
-        print('Starting')
+        print("Starting")
         return self
 
     def __exit__(self, *exc):
         exec_time = time.time() - self.start
-        print(f'Finished in {exec_time:.2f} seconds')
+        print(f"Finished in {exec_time:.2f} seconds")
         return False
 
     def __call__(self, func):
@@ -21,11 +22,14 @@ class ContextExample(ContextDecorator):
             print(f"Source code of the function: {source}")
             with self as ctx:
                 return func(*args, **kwargs)
+
         return wrapper
+
 
 @ContextExample()
 def say_hello():
     print("Hello, world!")
+
 
 if __name__ == "__main__":
     print("======Using the context manager======")
