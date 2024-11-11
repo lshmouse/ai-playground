@@ -1,0 +1,23 @@
+admissionController:
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  hosts:
+    - host: yunikorn.ingress.k8s.com
+      paths: ["/"]
+
+yunikornDefaults:
+  service.clusterId: "yunikorn-east"
+  service.policyGroup: queues
+  service.placeholderImage: registry.k8s.io/pause:3.7
+  queues.yaml: |
+    partitions:
+      - name: default
+        placementrules:
+          - name: tag
+            value: namespace
+            create: true
+        queues:
+        - name: root
+          submitacl: '*'
