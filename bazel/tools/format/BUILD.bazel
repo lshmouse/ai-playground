@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+load("@aspect_rules_lint//format:defs.bzl", "format_multirun")
+
+format_multirun(
+    name = "format",
+    c = "@llvm_toolchain_llvm//:bin/clang-format",
+    cc = "@llvm_toolchain_llvm//:bin/clang-format",
+    cuda = "@llvm_toolchain_llvm//:bin/clang-format",
+    # You can use standard gofmt instead of stricter gofumpt:
+    # go = "@go_sdk//:bin/gofmt",
+    go = "@aspect_rules_lint//format:gofumpt",
+    jsonnet = "@aspect_rules_lint//format:jsonnetfmt",
+    python = "@aspect_rules_lint//format:ruff",
+    shell = "@aspect_rules_lint//format:shfmt",
+    visibility = ["//:__subpackages__"],
+    yaml = "@aspect_rules_lint//format:yamlfmt",
+)
