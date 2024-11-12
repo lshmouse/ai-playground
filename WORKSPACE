@@ -58,7 +58,11 @@ go_dependencies()
 ### Rust Setup
 load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
 rules_rust_dependencies()
-rust_register_toolchains()
+rust_register_toolchains(
+    versions=["1.78.0"],
+    # Specifies the Rust edition to use for the registered toolchains
+    edition = "2021",
+)
 
 ### Docker Setup
 load("@rules_oci//oci:dependencies.bzl", "rules_oci_dependencies")
@@ -126,8 +130,6 @@ opentelemetry_cpp_deps()
 # # (required after v1.8.0) Load extra dependencies required for OpenTelemetry
 load("@io_opentelemetry_cpp//bazel:extra_deps.bzl", "opentelemetry_extra_deps")
 opentelemetry_extra_deps()
-
-
 
 load("@aspect_bazel_lib//lib:repositories.bzl", "aspect_bazel_lib_dependencies")
 
