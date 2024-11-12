@@ -1,0 +1,12 @@
+image:
+  repository: wandb/local
+  pullPolicy: IfNotPresent
+host: wandb.ingress.k8s.cn
+enableAdminApi: true
+ingress:
+  enabled: true
+  hosts:
+    - host: wandb.ingress.k8s.cn
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

@@ -10,6 +10,7 @@ from mmengine.runner import Runner
 
 
 class MMResNet50(BaseModel):
+
     def __init__(self):
         super().__init__()
         self.resnet = torchvision.models.resnet50()
@@ -21,7 +22,9 @@ class MMResNet50(BaseModel):
         elif mode == 'predict':
             return x, labels
 
+
 class Accuracy(BaseMetric):
+
     def process(self, data_batch, data_samples):
         score, gt = data_samples
         self.results.append({
@@ -60,7 +63,6 @@ val_dataloader = DataLoader(batch_size=32,
                                     transforms.Normalize(**norm_cfg)
                                 ])))
 
-
 default_hooks = dict(
     runtime_info=dict(type='RuntimeInfoHook'),
     timer=dict(type='IterTimerHook'),
@@ -83,8 +85,8 @@ runner = Runner(
     val_dataloader=val_dataloader,
     val_cfg=dict(),
     val_evaluator=dict(type=Accuracy),
-    visualizer=dict(type='Visualizer', vis_backends=[dict(type='TensorboardVisBackend')]),
+    visualizer=dict(type='Visualizer',
+                    vis_backends=[dict(type='TensorboardVisBackend')]),
 )
 
 runner.train()
-

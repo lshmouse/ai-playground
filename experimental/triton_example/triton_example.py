@@ -32,8 +32,7 @@ import torch
 X = torch.normal(0, 1, size=(583, 931), device="cuda")
 Y = torch.empty_like(X)
 # SPMD launch grid
-grid = (X.shape[0],)
+grid = (X.shape[0], )
 # enqueue GPU kernel
-softmax[grid](
-    Y, Y.stride(0), Y.stride(1), X, X.stride(0), X.stride(1), X.shape[0], X.shape[1]
-)
+softmax[grid](Y, Y.stride(0), Y.stride(1), X, X.stride(0), X.stride(1),
+              X.shape[0], X.shape[1])

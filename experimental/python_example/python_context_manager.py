@@ -6,6 +6,7 @@ import inspect
 
 
 class ContextExample(ContextDecorator):
+
     def __enter__(self):
         self.start = time.time()
         print("Starting")
@@ -17,6 +18,7 @@ class ContextExample(ContextDecorator):
         return False
 
     def __call__(self, func):
+
         def wrapper(*args, **kwargs):
             source = inspect.getsource(func)
             print(f"Source code of the function: {source}")

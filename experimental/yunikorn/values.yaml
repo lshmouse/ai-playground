@@ -1,12 +1,10 @@
 admissionController:
   replicaCount: 1
-
 ingress:
   enabled: true
   hosts:
     - host: yunikorn.ingress.k8s.com
       paths: ["/"]
-
 yunikornDefaults:
   service.clusterId: "yunikorn-east"
   service.policyGroup: queues

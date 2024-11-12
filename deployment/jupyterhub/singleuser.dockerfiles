@@ -1,0 +1,4 @@
+FROM oss/k8s-singleuser-sample:2.0.0
+
+RUN pip install torch==1.11.0 && \
+    pip install torchvision==0.12.0

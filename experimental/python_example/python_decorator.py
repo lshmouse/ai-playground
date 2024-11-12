@@ -5,18 +5,22 @@ from inspect import getsource
 
 
 def timer(func):
+
     def wrapper(*args, **kwargs):
         start = time.time()
         ret = func(*args, **kwargs)
         end = time.time()
         exec_time = end - start
-        print(f"Function {func.__name__} took {exec_time:.2f} seconds to execute")
+        print(
+            f"Function {func.__name__} took {exec_time:.2f} seconds to execute"
+        )
         return ret
 
     return wrapper
 
 
 def tracing(func):
+
     def wrapper(*args, **kwargs):
         print("Something is happening before the function is called.")
         print(f"Function name: {func.__name__}")
