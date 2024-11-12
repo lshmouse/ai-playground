@@ -1,10 +1,60 @@
-name: CI
+name: CI Pipeline
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 jobs:
+  shellcheck:
+    name: runner / shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Change reporter.
+          path: "." # Optional.
+          pattern: "*.sh" # Optional.
+          exclude: "./.git/*" # Optional.
+          check_all_files_with_shebangs: "false" # Optional.
+  # see: https://github.com/marketplace?type=actions
+  # see: https://github.com/google/yamlfmt
+  yamlfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # - name: yamllint
+      #   uses: reviewdog/action-yamllint@v1
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
+      #     fail_on_error: true
+      - name: yamlfmt
+        uses: yk-lab/yamlfmt-action@v1.0.0
+  # see: https://github.com/google/autoyapf
+  pyfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - name: autoyapf
+        id: autoyapf
+        uses: mritunjaysharma394/autoyapf@v2
+        with:
+          args: --style pep8 --recursive --in-place .
+      - name: Check for modified files
+        id: git-check
+        run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --local user.email "<githubusername>@users.noreply.github.com"
+          git config --local user.name "Python formatterBot"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated autoyapf fixes"
+          git push
   ci:
     runs-on: ubuntu-latest
     steps:

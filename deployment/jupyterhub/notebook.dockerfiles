@@ -1,0 +1,6 @@
+FROM oss/pytorch:1.8.1-cuda11.1
+
+RUN sudo apt-get update && sudo apt-get install net-tools
+RUN pip install notebook
+
+ENTRYPOINT ["jupyter", "notebook"]

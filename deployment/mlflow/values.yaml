@@ -1,0 +1,23 @@
+backendStore:
+  databaseMigration: true
+  databaseConnectionCheck: true
+artifactRoot:
+  proxiedArtifactStorage: false
+  s3:
+    # -- Specifies if you want to use AWS S3 Mlflow Artifact Root
+    enabled: false
+    # -- S3 bucket name
+    bucket: "" # required
+    # -- S3 bucket folder. If you want to use root level, please don't set anything.
+    path: "" # optional
+    # -- AWS IAM user AWS_ACCESS_KEY_ID which has attached policy for access to the S3 bucket
+    awsAccessKeyId: "" # (awsAccessKeyId and awsSecretAccessKey) or roleArn serviceaccount annotation required
+    # -- AWS IAM user AWS_SECRET_ACCESS_KEY which has attached policy for access to the S3 bucket
+    awsSecretAccessKey: "" # (awsAccessKeyId and awsSecretAccessKey) or roleArn serviceaccount annotation required
+ingress:
+  enabled: true
+  hosts:
+    - host: mlflow.ingress.k8s.cn
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

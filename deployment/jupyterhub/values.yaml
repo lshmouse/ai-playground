@@ -1,0 +1,30 @@
+hub:
+  service:
+    type: ClusterIP
+  image:
+    name: liushaohui/k8s-hub
+    tag: "2.0.0"
+    pullPolicy:
+    pullSecrets: []
+proxy:
+  service:
+    type: ClusterIP
+ingress:
+  enabled: true
+  hosts:
+    - jupyterhub.ingress.k8s.cn
+cull:
+  enabled: true
+  adminUsers: false
+  timeout: 3600
+debug:
+  enabled: false
+singleuser:
+  podNameTemplate:
+  extraTolerations: []
+  nodeSelector: {}
+  image:
+    name: jupyterhub/k8s-singleuser-sample
+    tag: "2.0.0"
+    pullPolicy:
+    pullSecrets: []

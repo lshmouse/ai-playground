@@ -1,0 +1,20 @@
+replicaCount: 1
+image:
+  repository: liushaohui/stable-diffusion
+  pullPolicy: Always
+  tag: "latest"
+models:
+  sd14: https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt
+ingress:
+  enabled: true
+  hosts:
+    - host: stable-diffusion.ingress.k8s.cn
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+nodeSelector:
+  app: "run-analysis-gpu"
+tolerations:
+  - key: "spots-node"
+    operator: "Exists"
+    effect: "NoExecute"
